@@ -27,3 +27,15 @@ CREATE TABLE _etudiant (
 	id_individu INT,
 	FOREIGN KEY (id_individu) REFERENCES individu(id_individu) 
 );
+
+CREATE TABLE _semestre (
+	id_semestre INT PRIMARY KEY,
+	num_semestre VARCHAR(5),
+	annee_univ VARCHAR(9)
+);
+
+CREATE TABLE _module (
+	id_module VARCHAR(5) PRIMARY KEY,
+	libelle_module VARCHAR,
+	ue VARCHAR(2)
+);
