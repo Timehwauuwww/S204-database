@@ -2,8 +2,7 @@ CREATE SCHEMA "partie1";
 
 SET SCHEMA 'partie1';
 
-DROP TABLE individu CASCADE;
-CREATE TABLE individu (
+CREATE TABLE _individu (
 	id_individu INT PRIMARY KEY,
 	nom VARCHAR,
 	prenom VARCHAR,
@@ -15,7 +14,7 @@ CREATE TABLE individu (
 	INE VARCHAR
 );
 
-CREATE TABLE etudiant (
+CREATE TABLE _etudiant (
 	code_nip VARCHAR PRIMARY KEY,
 	cat_socio_etu VARCHAR,
 	cat_socio_parent VARCHAR,
@@ -24,5 +23,7 @@ CREATE TABLE etudiant (
 	serie_bac VARCHAR,
 	dominante_bac VARCHAR,
 	specialite_bac VARCHAR,
-	mois_annee_obtention_bac VARCHAR(7)
+	mois_annee_obtention_bac VARCHAR(7),
+	id_individu INT,
+	FOREIGN KEY (id_individu) REFERENCES individu(id_individu) 
 );
