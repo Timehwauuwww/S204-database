@@ -1,3 +1,5 @@
+DROP SCHEMA IF EXISTS "partie1" CASCADE;
+
 CREATE SCHEMA "partie1";
 
 SET SCHEMA 'partie1';
@@ -25,7 +27,7 @@ CREATE TABLE _etudiant (
 	specialite_bac VARCHAR,
 	mois_annee_obtention_bac VARCHAR(7),
 	id_individu INT,
-	FOREIGN KEY (id_individu) REFERENCES individu(id_individu) 
+	FOREIGN KEY (id_individu) REFERENCES _individu(id_individu) 
 );
 
 CREATE TABLE _semestre (
@@ -38,4 +40,11 @@ CREATE TABLE _module (
 	id_module VARCHAR(5) PRIMARY KEY,
 	libelle_module VARCHAR,
 	ue VARCHAR(2)
+);
+
+CREATE TABLE _inscription(
+	group_tp VARCHAR(2),
+	amenagement_evaluation VARCHAR,
+	code_nip VARCHAR REFERENCES _etudiant(code_nip) ON DELETE CASCADE,
+    id_semestre INT REFERENCES _semestre(id_semestre) ON DELETE CASCADE
 );
